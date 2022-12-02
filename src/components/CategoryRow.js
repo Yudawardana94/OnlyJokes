@@ -27,7 +27,7 @@ const CategoryRow = ({
         onPress={() => toggleChild(cat.categories)}>
         <Text>{idx + 1}</Text>
         <View style={styles.dividedContent}>
-          <Text>{cat.categories}</Text>
+          <Text style={textStyles.title}>{cat.categories}</Text>
         </View>
         <View style={[styles.dividedContent, styles.centeredItem]}>
           {idx === 0 ? (
@@ -42,7 +42,8 @@ const CategoryRow = ({
             </Pressable>
           )}
         </View>
-        {isChildShown ? <Text>^</Text> : <Text>v</Text>}
+        {/* {isChildShown ? <Text>^</Text> : <Text>v</Text>} */}
+        <View style={isChildShown ? styles.triangleUp : styles.triangleDown} />
       </Pressable>
       {isChildShown && (
         <>
@@ -82,7 +83,6 @@ const CategoryRow = ({
 const styles = StyleSheet.create({
   rowContainer: {
     paddingHorizontal: 8,
-    backgroundColor: 'yellow',
     width,
   },
   rowCat: {
@@ -93,6 +93,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 8,
     marginTop: 6,
+    borderTopStartRadius: 4,
+    borderTopEndRadius: 4,
   },
   dividedContent: {
     alignItems: 'flex-start',
@@ -144,15 +146,44 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     borderRadius: 4,
   },
+  triangleUp: {
+    width: 0,
+    height: 0,
+    backgroundColor: 'transparent',
+    borderStyle: 'solid',
+    borderTopWidth: 0,
+    borderRightWidth: 6,
+    borderBottomWidth: 12,
+    borderLeftWidth: 6,
+    borderTopColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderBottomColor: 'black',
+    borderLeftColor: 'transparent',
+  },
+  triangleDown: {
+    width: 0,
+    height: 0,
+    backgroundColor: 'transparent',
+    borderStyle: 'solid',
+    borderTopWidth: 0,
+    borderRightWidth: 6,
+    borderBottomWidth: 12,
+    borderLeftWidth: 6,
+    borderTopColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderBottomColor: 'black',
+    borderLeftColor: 'transparent',
+    transform: [{rotate: '180deg'}],
+  },
 });
 
 const textStyles = StyleSheet.create({
   title: {
-    fontSize: 18,
+    fontSize: 14,
+    fontWeight: '600',
   },
   button: {
     fontSize: 14,
-    fontWeight: 'bold',
   },
 });
 

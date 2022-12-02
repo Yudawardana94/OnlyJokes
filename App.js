@@ -104,7 +104,7 @@ const App = () => {
             />
           );
         }}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.categories + Math.random() * 100}
       />
       <DetailModal
         modalVisible={modalVisible}
@@ -117,7 +117,6 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'pink',
     flex: 1,
     alignItems: 'center',
   },
@@ -151,6 +150,7 @@ const styles = StyleSheet.create({
 const textStyles = StyleSheet.create({
   title: {
     fontSize: 18,
+    fontWeight: 'bold',
   },
 });
 
